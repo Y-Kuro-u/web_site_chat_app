@@ -1,0 +1,20 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+  </head>
+  <body>
+
+    {% if room_lists %}
+        <ul>
+        {% for room in room_lists %}
+            <li>{{ room.room_name }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Room.</p>
+    {% endif %}
+    
+  </body>
+</html>
+
