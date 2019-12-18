@@ -7,5 +7,7 @@ class Message(models.Model):
                                 on_delete = models.CASCADE)
 
     time_stamp = models.DateTimeField()
-    user_id = models.OneToOneField(User,
-                                   on_delete = models.CASCADE)
+    user_id = models.ForeignKey(User,
+                                on_delete = models.CASCADE)
+
+    text = models.CharField(max_length=1000)
