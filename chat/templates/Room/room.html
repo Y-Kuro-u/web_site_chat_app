@@ -4,13 +4,28 @@
     <head>
     </head>
     <body>
+        <div class="messages">
         {% if message_lists %}
+
             {% for message in message_lists %}
                 <p>{{ message.text }}</p>
             {% endfor %}
+
         {% else %}
             <p>No message</p>
+
         {% endif %}
+        </div>
+
+        <div class="send_message">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="投稿">
+            </form>
+        </div>
+        
+
     </body>
 </html>
 
