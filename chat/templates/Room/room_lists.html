@@ -8,7 +8,7 @@
     {% if room_lists %}
         <ul>
         {% for room in room_lists %}
-            <li>{{ room.room_name }}</li>
+            <li><a href="/chat/lobby/{{ lobby_id }}/{{ room.id }}/">{{ room.room_name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}

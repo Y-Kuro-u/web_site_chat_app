@@ -8,7 +8,7 @@
     {% if lobby_lists %}
         <ul>
         {% for lobby in lobby_lists %}
-            <li><a href="/chat/room/{{ lobby.id }}/"> {{ lobby.lobby_name }} </a></li>
+            <li><a href="/chat/lobby/{{ lobby.id }}/"> {{ lobby.lobby_name }} </a></li>
         {% endfor %}
         </ul>
     {% else %}

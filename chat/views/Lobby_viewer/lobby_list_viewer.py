@@ -8,4 +8,4 @@ def base_viewer(request):
     lobby_lists = Lobby.objects.all()
     context = {"lobby_lists":lobby_lists}
 
-    return render(request, "Lobby/lobby_base.html", context=context)
+    return render(request, "Lobby/lobby_lists.html", context=context)

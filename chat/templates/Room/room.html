@@ -1,0 +1,16 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    </head>
+    <body>
+        {% if message_lists %}
+            {% for message in message_lists %}
+                <p>{{ message.text }}</p>
+            {% endfor %}
+        {% else %}
+            <p>No message</p>
+        {% endif %}
+    </body>
+</html>
+
