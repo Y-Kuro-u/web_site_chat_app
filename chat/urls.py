@@ -1,10 +1,12 @@
 from django.urls import path
-from chat.views.Lobby_viewer.lobby_list_viewer import base_viewer as lobby_list_viewer
-from chat.views.Room_viwer.room_list_viewr import base_viewer as room_list_viewr
-from chat.views.Room_viwer.room_viewer import base_viewer as room_viewr
+from chat.controller.lobby_controller.lobby_top import lobby_top
+from chat.controller.room_controller.room_top import room_top
+from chat.controller.room_controller.chat_text_in_room import chat_room
+from chat.controller.model_controller.message_conteroller import get_text_ref_time
 
 urlpatterns = [
-    path('lobby', lobby_list_viewer, name='lobbies'),
-    path("lobby/<int:lobby_id>/",room_list_viewr,name="rooms"),
-    path("lobby/<int:lobby_id>/<int:room_id>/",room_viewr,name="room")
+    path('lobby', lobby_top, name='lobbies'),
+    path("lobby/<int:lobby_id>/",room_top,name="rooms"),
+    path("lobby/<int:lobby_id>/<int:room_id>/",chat_room,name="room"),
+    path("api/",get_text_ref_time)
 ]
