@@ -4,3 +4,6 @@ from django.db import models
 
 class User(auth_models.User):
     display_name = models.CharField(max_length=20)
+    biobraphy = models.CharField(max_length=100)
+    
+    #imagefieldを揃える

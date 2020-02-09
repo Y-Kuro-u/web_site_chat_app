@@ -1,8 +1,9 @@
 from chat.models.users import User
 from chat.views import lobby_views
 
+from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.decorators import login_required
 
 
 def create_user(request):
@@ -24,7 +25,7 @@ def create_user(request):
         if user_status is not None:
             login(request, user_status)
 
-            return lobby_top(request)
+            return lobby_views.lobby_top(request)
 
     return render(request, "User/create_user.html")
 
@@ -42,13 +43,13 @@ def login_user(request):
             if user_status is not None:
                 login(request, user_status)
 
-                return lobby_top(request)
+                return lobby_views.lobby_top(request)
 
-        return lobby_top(request)
+        return lobby_views.lobby_top(request)
 
     return render(request, "User/login_user.html")
 
-
+@login_required(login_url="chat/signin")
 def logout_user(request):
     logout(request)
 
