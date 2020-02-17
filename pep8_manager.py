@@ -10,7 +10,7 @@ def auto_pep(file_path):
                 os.system("autopep8 -i -a " + file_name)
             else:
                 continue
-        elif os.path.isfile(file_name):
+        elif os.path.isdir(file_name):
             auto_pep(file_name)
         else:
             continue

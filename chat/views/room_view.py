@@ -14,6 +14,7 @@ def chat_room(request, lobby_id, room_id):
 
     return render(request, "Room/room.html", context=context)
 
+
 @login_required(login_url="chat/signin")
 def room_list(request, lobby_id):
 

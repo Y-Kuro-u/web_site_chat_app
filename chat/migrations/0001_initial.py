@@ -18,14 +18,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Lobby',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('lobby_name', models.CharField(max_length=50)),
             ],
         ),
         migrations.CreateModel(
             name='User',
             fields=[
-                ('user_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('user_ptr',
+                 models.OneToOneField(auto_created=True,
+                                      on_delete=django.db.models.deletion.CASCADE,
+                                      parent_link=True,
+                                      primary_key=True,
+                                      serialize=False,
+                                      to=settings.AUTH_USER_MODEL)),
                 ('display_name', models.CharField(max_length=20)),
                 ('biobraphy', models.CharField(max_length=100)),
             ],
@@ -42,21 +49,26 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Room',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('room_name', models.CharField(max_length=15)),
                 ('created_at', models.DateTimeField()),
-                ('lobby_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='chat.Lobby')),
+                ('lobby_id', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='chat.Lobby')),
                 ('user_ids', models.ManyToManyField(to='chat.User')),
             ],
         ),
         migrations.CreateModel(
             name='Message',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField()),
                 ('text', models.CharField(max_length=1000)),
-                ('room_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='chat.Room')),
-                ('username', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='chat.User')),
+                ('room_id', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='chat.Room')),
+                ('username', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='chat.User')),
             ],
         ),
     ]

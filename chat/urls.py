@@ -1,14 +1,14 @@
-from chat.views import lobby_views, room_views
-from chat.views.user_views import user_controller
+from chat.views import lobby_view, room_view
+from chat.views.user_views import user_view
 
 from django.urls import path
 
 urlpatterns = [
-    path('lobby', lobby_views.lobby_top, name='lobbies'),
-    path("lobby/<int:lobby_id>/", room_views.room_list, name="rooms"),
+    path('lobby/', lobby_view.lobby_top, name='lobby'),
+    path("lobby/<int:lobby_id>/", room_view.room_list, name="rooms"),
     path("lobby/<int:lobby_id>/<int:room_id>/",
-         room_views.chat_room, name="room"),
-    path("signup", user_controller.create_user),
-    path("signin", user_controller.login_user),
-    path("signout", user_controller.logout_user)
+         room_view.chat_room, name="room"),
+    path("signup/", user_view.create_user, name="signup"),
+    path("signin/", user_view.login_user, name="signin"),
+    path("signout/", user_view.logout_user, name="signout")
 ]
