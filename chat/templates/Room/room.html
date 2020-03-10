@@ -2,47 +2,33 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
+        <script type="text/javascript" src="{% static 'js/uikit/uikit.min.js' %}"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/chatroom/chat.js' %}"></script>
     </head>
     <body>
-        <textarea id="chat-log" cols="100" rows="20"></textarea><br/>
-        <div style="display:inline-flex">
-            <input id="chat-message-input" type="text" size="100"/><br/>
-            <input id="chat-message-submit" type="button" value="投稿"/>
+        <div class="uk-section-large">
+            <div class="uk-container-xlarge uk-width-large">
+                <div class=" uk-grid">
+                    <div class="uk-card uk-card-default uk-border-rounded uk-position-cover uk-padding-large uk-width-2-3">
+
+                        <div class="message_box uk-card-body uk-padding-small">
+                        </div>
+                        <div class="uk-margin uk-position-bottom" uk-margin>
+                            <div class=" uk-grid uk-padding-large">
+                                <input class="chat-message-input uk-width-4-5" type="text">
+                                <button class="chat_message_submit uk-button uk-button-default uk-width-1-5">投稿</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
-
-        <script>
-            var ChatSocket = new WebSocket(
-                "ws://" + window.location.host + window.location.pathname
-            );
-
-            ChatSocket.onmessage = function(e){
-                var data = JSON.parse(e.data);
-                var message = data["message"];
-                var display_name = data["display_name"];
-                document.querySelector("#chat-log").value += (display_name + ": ");
-                document.querySelector("#chat-log").value += (message + "\n");
-            };
-
-            ChatSocket.onclose = function(e){
-                console.error("error chat socket closed unexpectedly");
-            };
-
-            document.querySelector('#chat-message-input').onkeyup = function(e) {
-                if (e.keyCode === 13) {
-                    document.querySelector('#chat-message-submit').click();
-                }
-            };
-
-            document.querySelector("#chat-message-submit").onclick = function(e){
-                var messageInputDom = document.querySelector("#chat-message-input");
-                var message = messageInputDom.value;
-                ChatSocket.send(JSON.stringify({
-                    "message":message
-                }));
-                messageInputDom.value = "";
-            }
-        </script>
     </body>
 </html>
 

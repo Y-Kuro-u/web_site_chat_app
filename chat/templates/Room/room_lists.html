@@ -1,19 +1,25 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-  </head>
-  <body>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}">
+    <script type="text/javascript" src="{% static 'js/uikit/uikit.min.js' %}"></script>
+</head>
+<body>
 
-    {% if room_lists %}
-        <ul>
-        {% for room in room_lists %}
-            <li><a href="/chat/lobby/{{ lobby_id }}/{{ room.id }}/">{{ room.room_name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No Room.</p>
-    {% endif %}
+	<div class="uk-position-center">
+		{% if room_lists %}
+			<ul class="uk-list uk-list-striped">
+				{% for room in room_lists %}
+					<li><a href="/chat/lobby/{{ lobby_id }}/{{ room.id }}/">{{ room.room_name }}</a></li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p>No Room.</p>
+		{% endif %}
+	</div>
+
     
   </body>
 </html>

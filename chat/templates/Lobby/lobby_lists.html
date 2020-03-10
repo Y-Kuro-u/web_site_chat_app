@@ -1,20 +1,30 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-  </head>
-  <body>
+<head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}">
+  <script type="text/javascript" src="{% static 'js/uikit/uikit.min.js' %}"></script>
+</head>
+<body>
+  {% if lobby_lists %}
 
-    {% if lobby_lists %}
-        <ul>
-        {% for lobby in lobby_lists %}
-            <li><a href="/chat/lobby/{{ lobby.id }}/"> {{ lobby.lobby_name }} </a></li>
+    <div class="uk-position-center" uk-grid>
+
+      {% for lobby in lobby_lists %}
+        <div class="uk-card uk-card-body uk-card-default uk-width-auto">
+          <div class="uk-card-title">
+            <a href="/chat/lobby/{{ lobby.id }}/"> {{ lobby.lobby_name }} </a>
+          </div>
+        </div>
+      
         {% endfor %}
-        </ul>
-    {% else %}
-        <p>No Lobby.</p>
-    {% endif %}
-    
-  </body>
-</html>
 
+    </div>
+        
+  {% else %}
+      <p>No Lobby.</p>
+  {% endif %}
+    
+</body>
+</html>

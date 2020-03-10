@@ -33,24 +33,26 @@ class ChatConsumer(WebsocketConsumer):
         message = text_json["message"]
 
         Message.objects.store(text=text_data,
-                              room_id=self.room_id,
-                              username=self.username,
-                              )
-
+                            room_id=self.room_id,
+                            username=self.username,
+                            )
         async_to_sync(self.channel_layer.group_send)(
             self.group_name,
             {
                 "type": "chat.message",
                 "message": message,
+                "username":self.username,
             }
         )
 
     def chat_message(self, event):
         message = event["message"]
-        self.send(
-            text_data=json.dumps(
-                {"message": message,
-                 "display_name": self.display_name
-                 }
+        print(event["username"],self.username)
+        if event["username"] != self.username:
+            self.send(
+                text_data=json.dumps(
+                    {"message": message,
+                     "display_name": self.display_name
+                    }
+                )
             )
-        )

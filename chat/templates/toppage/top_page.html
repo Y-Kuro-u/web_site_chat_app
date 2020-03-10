@@ -1,0 +1,26 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}">
+  <script type="text/javascript" src="{% static 'js/uikit.min.js' %}"></script>
+</head>
+<body>
+
+    <div class="uk-flex uk-flex-center uk-height-large uk-width-auto uk-animation-fade">
+        <img src="{% static 'image/flower.svg' %}">
+    </div>
+      
+    {% csrf_token %}
+    <p uk-margin>
+        <a href="../../chat/lobby/">
+            <button class="uk-button uk-button-text uk-width-1-1 uk-margin-small-bottom" type="submit">
+                <div class="uk-text-large">
+                    ENTRY
+                </div>
+            </button>
+        </a>
+    </p>
+
+</body>
