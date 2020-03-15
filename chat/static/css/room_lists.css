@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    height: 100vh;
+}
+
+.list_box{
+    min-width: 100vw;
+}
+
+.room_list{
+    margin: 10px;
+}
+
+.create_room_button{
+    position: fixed;
+    top: 80%;
+    left: 85%;
+
+    width: 100px;
+    height: 100px;
+}
+

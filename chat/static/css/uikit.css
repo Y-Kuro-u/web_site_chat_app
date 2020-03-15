@@ -1971,24 +1971,48 @@ select.uk-form-width-xsmall {
   color: #333;
   border-color: #999999;
 }
+
+/*
+ * white
+ */
+ .uk-button-white {
+  background-color: white;
+  color: #333;
+  border: 1px solid white;
+}
+/* Hover + Focus */
+.uk-button-white:hover,
+.uk-button-white:focus {
+  background-color: white;
+  color: #333;
+  border: 1px solid white;
+}
+/* OnClick + Active */
+.uk-button-white:active,
+.uk-button-white.uk-active {
+  background-color: white;
+  color: #333;
+  border: 1px solid white;
+}
+
 /*
  * Primary
  */
 .uk-button-primary {
-  background-color: #1e87f0;
+  background-color: white;
   color: #fff;
   border: 1px solid transparent;
 }
 /* Hover + Focus */
 .uk-button-primary:hover,
 .uk-button-primary:focus {
-  background-color: #0f7ae5;
+  background-color: white;
   color: #fff;
 }
 /* OnClick + Active */
 .uk-button-primary:active,
 .uk-button-primary.uk-active {
-  background-color: #0e6dcd;
+  background-color: white;
   color: #fff;
 }
 /*

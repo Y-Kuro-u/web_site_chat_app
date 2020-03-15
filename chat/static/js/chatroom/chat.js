@@ -16,7 +16,7 @@ ChatSocket.onmessage = function(e){
         message_paragraph += '      </div>';
         message_paragraph += '     </div>';
         message_paragraph += '</div>';
-    $(".message_box").append(message_paragraph);
+    $(".chat_log").append(message_paragraph);
 };
 
 ChatSocket.onclose = function(e){
@@ -27,6 +27,7 @@ $("document").ready(function(){
     $('.chat-message-input').keypress(function(e){
         if(e.which == 13){
             var message = $('.chat-message-input').val();
+            $('.chat-message-input').val('');
             ChatSocket.send(JSON.stringify({
                 "message":message
             }));
@@ -39,7 +40,12 @@ $("document").ready(function(){
                 message_paragraph += '      </div>';
                 message_paragraph += '     </div>';
                 message_paragraph += '</div>';
-            $(".message_box").append(message_paragraph);
+            $(".chat_log").append(message_paragraph);
+
+            var element = document.documentElement;
+            var bottom_position = element.scrollHeight - element.clientHeight;
+            window.scroll(0,bottom_position)
+
         };
     });
 })

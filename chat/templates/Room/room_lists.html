@@ -3,14 +3,17 @@
 <html lang="ja">
 <head>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}">
-    <script type="text/javascript" src="{% static 'js/uikit/uikit.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/room_lists.css' %}">
+	<script type="text/javascript" src="{% static 'js/uikit/uikit.min.js' %}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.3.6/dist/js/uikit-icons.min.js"></script>
 </head>
 <body>
 
-	<div class="uk-position-center">
+	<div class="list_box">
 		{% if room_lists %}
-			<ul class="uk-list uk-list-striped">
+			<ul class="room_list uk-list uk-list-striped">
+				<li>ルーム名</li>
 				{% for room in room_lists %}
 					<li><a href="/chat/lobby/{{ lobby_id }}/{{ room.id }}/">{{ room.room_name }}</a></li>
 				{% endfor %}
@@ -19,8 +22,8 @@
 			<p>No Room.</p>
 		{% endif %}
 	</div>
-
+	
+	<a href="chat/lobby/create_room/" class="uk-icon-button create_room_button" uk-icon="icon: plus-circle; ratio:3"></a>
     
   </body>
 </html>
-

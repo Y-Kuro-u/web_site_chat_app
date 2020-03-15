@@ -2,13 +2,23 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/create_user.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}">
+        <script type="text/javascript" src="{% static 'js/uikit/uikit.min.js' %}"></script>
     </head>
     <body>
-        <form method="POST">
-            {% csrf_token %}
-            ID:<input id="username" type="text" size="10" name="username"/><br>
-            Pass:<input id="user_password" type="text" size="30" name="user_password" /><br>
-            <input id="submit" type="submit" value="新規作成">
-        </form>
+
+        <header>
+            ユーザー情報
+        </header>
+        <div class="input_box">
+            <form class="input_form" method="POST">
+                {% csrf_token %}
+                <input class="uk-input" id="username" type="text" size="10" name="username" placeholder="ID"/><br>
+                <input class="uk-input" id="user_password" type="text" size="30" name="user_password" placeholder="Pass"/><br>
+                <input class=" uk-button uk-button-primary" id="submit" type="submit" value="Sign In">
+                </form>
+        </div>
     </body>
 </html>
