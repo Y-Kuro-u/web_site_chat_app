@@ -1,0 +1,23 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/create_user.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}">
+        <script type="text/javascript" src="{% static 'js/uikit/uikit.min.js' %}"></script>
+    </head>
+    <body>
+
+        <header>
+            ユーザー情報
+        </header>
+        <div class="input_box">
+            <form action="./" class="input_form" method="POST">
+                {% csrf_token %}
+                <input class="uk-input" id="room_name" type="text" size="10" name="room_name" placeholder="ルーム名"/><br>
+                <input class=" uk-button uk-button-primary" id="submit" type="submit" value="新規ルームの作成">
+            </form>
+        </div>
+    </body>
+</html>

@@ -11,5 +11,6 @@ urlpatterns = [
          room_view.chat_room, name="room"),
     path("signup/", user_view.create_user, name="signup"),
     path("signin/", user_view.login_user, name="signin"),
-    path("signout/", user_view.logout_user, name="signout")
+    path("signout/", user_view.logout_user, name="signout"),
+    path("lobby/<int:lobby_id>/create_room/",room_view.create_room,name="create_room")
 ]
