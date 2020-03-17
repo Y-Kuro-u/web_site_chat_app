@@ -5,6 +5,7 @@ from chat.models.users import User
 from chat.models.rooms import Room
 from chat.models.lobbies import Lobby
 
+
 class UserViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -47,7 +48,6 @@ class LobbyViewTest(TestCase):
         User.objects.create_user(username="test",
                                  password="test").save()
 
-
     def test_lobby_top_login(self):
         client = Client()
         client.login(username="test",
@@ -63,15 +63,16 @@ class LobbyViewTest(TestCase):
             response.redirect_chain[0][0],
             "chat/signin?next=/chat/lobby/")
 
+
 class RoomViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         User.objects.create_user(username="test",
                                  password="test").save()
-        Lobby.objects.create(lobby_name = "test_lobby").save()
-        Room.objects.create(lobby_id = Lobby.objects.filter(lobby_name="test_lobby")[0],
-                            room_name = "test_room",
-                            created_at = timezone.now()
+        Lobby.objects.create(lobby_name="test_lobby").save()
+        Room.objects.create(lobby_id=Lobby.objects.filter(lobby_name="test_lobby")[0],
+                            room_name="test_room",
+                            created_at=timezone.now()
                             ).save()
 
     def test_room_list_login(self):

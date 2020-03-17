@@ -4,7 +4,7 @@ from chat.views.user_views import user_view
 from django.urls import path
 
 urlpatterns = [
-    path("top/",top_page_view.top_page_view),
+    path("top/", top_page_view.top_page_view),
     path('lobby/', lobby_view.lobby_top, name='lobby'),
     path("lobby/<int:lobby_id>/", room_view.room_list, name="rooms"),
     path("lobby/<int:lobby_id>/<int:room_id>/",
@@ -12,5 +12,8 @@ urlpatterns = [
     path("signup/", user_view.create_user, name="signup"),
     path("signin/", user_view.login_user, name="signin"),
     path("signout/", user_view.logout_user, name="signout"),
-    path("lobby/<int:lobby_id>/create_room/",room_view.create_room,name="create_room")
+    path(
+        "lobby/<int:lobby_id>/create_room/",
+        room_view.create_room,
+        name="create_room")
 ]
